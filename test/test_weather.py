@@ -72,5 +72,5 @@ async def test_get_current_weather():
         patched_get.return_value = MOCK_JSON_DATA
         patched_get.json = MOCK_JSON_DATA
         test = set_up_tests()
-        current_weather = await test.get_current_weather()
+        await test.get_current_weather()
         # TODO: Properly mock and complete this test

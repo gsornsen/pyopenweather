@@ -20,7 +20,8 @@ class Weather:
 
     @property
     def latitude(self):
-        """Current latitude
+        """
+        Current latitude
 
         Returns:
             float: Current latitude
@@ -33,7 +34,8 @@ class Weather:
 
     @property
     def longitude(self):
-        """Current longitude
+        """
+        Current longitude
 
         Returns:
             float: Current longitude
@@ -46,11 +48,12 @@ class Weather:
 
     @property
     def raw_weather_dict(self):
-        """Returns a dictionary representation of OpenWeather API JSON data
+        """
+        Returns a dictionary representation of OpenWeather API JSON data
 
         The OpenWeather API is rate limited at 60 calls/minute or 1M calls/month
         for the free tier.
-        
+
         https://openweathermap.org/price
 
         To ensure we do not exceed this limit, we have imposed a cache.
@@ -75,7 +78,8 @@ class Weather:
 
     @property
     def temperature(self):
-        """Current temperature in celcius
+        """
+        Current temperature in celcius
 
         Returns:
             float: Current temperature in celcius
@@ -84,7 +88,8 @@ class Weather:
 
     @property
     def feels_like(self):
-        """Current Human Felt temperature in celcius
+        """
+        Current Human Felt temperature in celcius
 
         Returns:
             float: Current Human Felt temperature in celcius
@@ -93,7 +98,8 @@ class Weather:
 
     @property
     def temp_min(self):
-        """Minimum observed temperature
+        """
+        Minimum observed temperature
 
         Returns:
             float: Minimum observed temperature
@@ -102,7 +108,8 @@ class Weather:
 
     @property
     def temp_max(self):
-        """Maximum observed temperature
+        """
+        Maximum observed temperature
 
         Returns:
             float: Maximum observed temperature
@@ -111,7 +118,8 @@ class Weather:
 
     @property
     def pressure(self):
-        """Atmospheric pressure in hPa
+        """
+        Atmospheric pressure in hPa
 
         Returns:
             int: Atmospheric pressure in hPa
@@ -120,7 +128,8 @@ class Weather:
 
     @property
     def humidity(self):
-        """Humidity in %
+        """
+        Humidity in %
 
         Returns:
             int: Humidity in %
@@ -129,7 +138,8 @@ class Weather:
 
     @property
     def visibility(self):
-        """Visibility in meters
+        """
+        Visibility in meters
 
         Returns:
             int: Visibility in meters
@@ -138,7 +148,8 @@ class Weather:
 
     @property
     def wind_speed(self):
-        """Wind speed in meters per second
+        """
+        Wind speed in meters per second
 
         Returns:
             float: Wind speed in meters per second
@@ -147,7 +158,8 @@ class Weather:
 
     @property
     def wind_direction(self):
-        """Wind direction in degrees
+        """
+        Wind direction in degrees
 
         Returns:
             int: Wind direction in degrees
@@ -155,7 +167,8 @@ class Weather:
         return int(self.raw_weather_dict['wind']['deg'])
 
     async def get_current_weather(self):
-        """Returns JSON data of current weather for location
+        """
+        Returns JSON data of current weather for location
 
         Examples:
             {
@@ -211,7 +224,7 @@ class Weather:
           'appid': self.api_key,
           'units': 'metric'
         }
-        uri = f'http://api.openweathermap.org/data/2.5/weather'
+        uri = 'http://api.openweathermap.org/data/2.5/weather'
         request = await async_get(uri, params=query_params)
         if request.status_code == 200:
           return request.json()
