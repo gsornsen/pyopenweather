@@ -1,5 +1,5 @@
 import asyncio
-from requests_async import get
+from requests_async import get as async_get
 from os import environ
 from time import time
 
@@ -212,7 +212,7 @@ class Weather:
           'units': 'metric'
         }
         uri = f'http://api.openweathermap.org/data/2.5/weather'
-        request = await get(uri, params=query_params)
+        request = await async_get(uri, params=query_params)
         if request.status_code == 200:
           return request.json()
         else:
