@@ -1,0 +1,15 @@
+language: python
+dist: focal
+
+python:
+  - "3.7"
+  - "3.8"
+  - "3.9"
+
+install:
+  - make develop
+
+jobs:
+  include:
+    - stage: test
+      script: make test
