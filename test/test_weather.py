@@ -1,5 +1,7 @@
 from pyopenweather import weather
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
+import pytest
+
 
 MOCK_JSON_DATA = {
                   "coord": {
@@ -47,3 +49,28 @@ MOCK_JSON_DATA = {
 MOCK_LATITUDE = -121.89
 MOCK_LONGITUDE = 37.34
 MOCK_API_KEY = f'1234_TOTALLY_REAL_API_KEY_HERE_5678'
+
+
+def set_up_tests():
+    test_obj = weather.Weather(lat=MOCK_LATITUDE,
+                           long=MOCK_LONGITUDE,
+                           api_key=MOCK_API_KEY)
+    return test_obj
+
+def test_get_latitude():
+    test = set_up_tests()
+    assert test.latitude == MOCK_LATITUDE
+
+def test_get_longitude():
+    test = set_up_tests()
+    assert test.longitude == MOCK_LONGITUDE
+
+@pytest.mark.asyncio
+async def test_get_current_weather():
+    with patch('weather.async_get') as patched_get:
+        patched_get.status_code = 200
+        patched_get.return_value = MOCK_JSON_DATA
+        patched_get.json = MOCK_JSON_DATA
+        test = set_up_tests()
+        current_weather = await test.get_current_weather()
+        # TODO: Properly mock and complete this test
