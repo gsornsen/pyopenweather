@@ -15,4 +15,4 @@ install:
 jobs:
   include:
     - stage: Unit Tests
-      script: make test && bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r report.xml
+      script: make test && bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
