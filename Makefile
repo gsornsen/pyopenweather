@@ -39,6 +39,7 @@ build: clean_build
 
 .PHONY: test
 test:
+	$(VENVPYTHON) -m pip install -r ci-cd-requirements.txt
 	$(VENVPYTHON) -m tox
 
 .PHONY: docs
@@ -55,6 +56,7 @@ upload:
 clean:
 	@echo "Removing Python virtual environment 'venv'."
 	rm -rf $(PYTHONVENV)
+	rm -rf .tox
 
 .PHONY: sparkling
 sparkling: clean
