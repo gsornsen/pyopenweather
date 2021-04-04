@@ -5,7 +5,8 @@ from time import time
 
 class Weather:
     def __init__(self, lat=None, long=None, api_key=None):
-        """Class to get weather data from OpenWeatherMap
+        """
+        Class to get weather data from OpenWeatherMap
 
         Args:
             lat (float, optional): Current latitude. Defaults to None.
