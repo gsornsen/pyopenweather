@@ -1,6 +1,6 @@
 # pyopenweather
 
-pyopenweather is a lightweight asyncronous python wrapper for the [OpenWeatherMap Current Weather Data API](https://openweathermap.org/current)
+pyopenweather is a lightweight asynchronous Python wrapper for the [OpenWeatherMap Current Weather Data API](https://openweathermap.org/current)
 
 ## Badges
 
@@ -30,18 +30,44 @@ pyopenweather will search for the following environment variables when the `Weat
 - `LATITUDE`
 - `LONGITUDE`
 
-#### API Key
+#### `OPENWEATHER_API_KEY`
 
-If you set the API key and the environment variable `OPENWEATHER_API_KEY` the library will use it on instantiation, otherwise the API key can be passed in as the `api_key` parameter on instantiation.
+If you set the API key and the environment variable `OPENWEATHER_API_KEY` the library will use it on instantiation, otherwise the API key can be passed in as the `api_key` parameter.
 
+#### `LATITUDE`
 
+If you set the `LATITUDE` environment variable, the library will use it on instantiation, otherwise the latitude can be passed in as the `lat` parameter.
 
-### Example
+#### `LONGITUDE`
+
+If you set the `LONGITUDE` environment variable, the library will use it on instantiation, otherwise the longitude can be passed in as the `long` parameter.
+
+### Examples
+
+#### With Environment Variables
 
 ```python
 from pyopenweather.weather import Weather
 
+weather = Weather()
 
+weather.longitude # returns longitude
+weather.latitude # returns latitude
+weather.temperature # returns temperature
+weather.pressure # returns temperatuire
+```
+
+#### Without Environment Variables
+
+```python
+from pyopenweather.weather import Weather
+
+weather = Weather(lat=37.34, long=-121.89, api_key='abcdef123456')
+
+weather.longitude # returns longitude
+weather.latitude # returns latitude
+weather.temperature # returns temperature
+weather.pressure # returns temperatuire
 ```
 
 ## Contributing
