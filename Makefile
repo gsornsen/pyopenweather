@@ -67,3 +67,5 @@ sparkling: clean
 	rm -rf docs/_build/*
 	rm -f src/version.py
 	rm -rf htmlcov
+	rm -rf coverage.xml
+	rm -rf *.egg-info
