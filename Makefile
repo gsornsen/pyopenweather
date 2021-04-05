@@ -16,7 +16,6 @@ develop: bootstrap
 	$(VENVPYTHON) setup.py develop
 	@echo "\nYou may want to activate the virtual environmnent with 'source venv/bin/activate'\n"
 
-
 .PHONY: bootstrap
 bootstrap:
 	@echo "Creating virtual environment 'venv' for development."
@@ -46,7 +45,6 @@ test:
 docs:
 	$(VENVPYTHON) -m pip install -r $(PROJ_BASE)/docs/requirements-docs.txt
 	cd docs && make html
-
 
 .PHONY: upload
 upload:
