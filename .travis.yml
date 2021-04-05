@@ -16,3 +16,12 @@ jobs:
   include:
     - stage: Unit Tests
       script: make test && bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
+    - stage: Build Wheel
+      script: make build
+
+deploy:
+  provider: pypi
+  username: "__token__"
+  password: $PYPI_TOKEN
+  on:
+    branch: main

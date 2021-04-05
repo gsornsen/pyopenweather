@@ -1,5 +1,5 @@
 PROJ_BASE=$(shell pwd)
-PYTHONVER=python3.8
+PYTHONVER=python3.9
 PYTHONVENV=$(PROJ_BASE)/venv
 VENVPYTHON=$(PYTHONVENV)/bin/$(PYTHONVER)
 PYTEST=$(PYTHONVENV)/bin/pytest
@@ -16,11 +16,10 @@ develop: bootstrap
 	$(VENVPYTHON) setup.py develop
 	@echo "\nYou may want to activate the virtual environmnent with 'source venv/bin/activate'\n"
 
-
 .PHONY: bootstrap
 bootstrap:
 	@echo "Creating virtual environment 'venv' for development."
-	python3 -m virtualenv -p $(PYTHONVER) venv
+	$(PYTHONVER) -m virtualenv -p $(PYTHONVER) venv
 	@echo "Installing python modules from requirements.txt"
 	$(VENVPYTHON) -m pip install -r requirements.txt
 
@@ -40,13 +39,12 @@ build: clean_build
 .PHONY: test
 test:
 	$(VENVPYTHON) -m pip install -r ci-cd-requirements.txt
-	$(VENVPYTHON) -m tox
+	$(VENVPYTHON) -m tox -p
 
 .PHONY: docs
 docs:
 	$(VENVPYTHON) -m pip install -r $(PROJ_BASE)/docs/requirements-docs.txt
 	cd docs && make html
-
 
 .PHONY: upload
 upload:
@@ -67,3 +65,5 @@ sparkling: clean
 	rm -rf docs/_build/*
 	rm -f src/version.py
 	rm -rf htmlcov
+	rm -rf coverage.xml
+	rm -rf *.egg-info
