@@ -23,7 +23,6 @@ bootstrap:
 	@echo "Installing python modules from requirements.txt"
 	$(VENVPYTHON) -m pip install -r requirements.txt
 
-
 .PHONY: clean_build
 clean_build:
 	@echo "Removing build artifacts"
