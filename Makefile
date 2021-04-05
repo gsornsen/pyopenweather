@@ -19,7 +19,7 @@ develop: bootstrap
 .PHONY: bootstrap
 bootstrap:
 	@echo "Creating virtual environment 'venv' for development."
-	python3 -m virtualenv -p $(PYTHONVER) venv
+	$(PYTHONVER) -m virtualenv -p $(PYTHONVER) venv
 	@echo "Installing python modules from requirements.txt"
 	$(VENVPYTHON) -m pip install -r requirements.txt
 
