@@ -39,7 +39,7 @@ build: clean_build
 .PHONY: test
 test:
 	$(VENVPYTHON) -m pip install -r ci-cd-requirements.txt
-	$(VENVPYTHON) -m tox
+	$(VENVPYTHON) -m tox -p
 
 .PHONY: docs
 docs:
